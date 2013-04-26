@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @parent.comments.build(params[:comment])
      
     if @comment.save
-      redirect_to post_path(@comment.post), :notice => 'Thank you for your comment!'
+      redirect_to @comment.post, :notice => 'Thank you for your comment!'
     else
       render :new
     end
