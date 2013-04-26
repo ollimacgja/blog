@@ -14,7 +14,19 @@ class CommentsController < ApplicationController
       render :new
     end
   end
- 
+ def edit
+   @comment = Comment.find_by_id(params[:id])
+ end
+
+ def update
+    @comment = Comment.find_by_id(params[:id])
+     
+    if @comment.update_attributes(params[:comment])
+      redirect_to @comment.post, :notice => 'Thank you for your edition!'
+    else
+      render :edit
+    end
+ end
   protected
    
   def get_parent
